@@ -15,5 +15,36 @@
   <%= @brand.viticulture %>
 </p>
 
+<div class="media">
+	<div class="media-body">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Type</th>
+					<th>Subtype</th>
+					<th>Vintage</th>
+					<th>Country</th>
+					<th>Region</th>
+					<th>Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @products.each do |product| %>
+				<tr>
+					<td><%= product.name %></td>
+					<td><%= product.product_type %></td>
+					<td><%= product.product_subtype %></td>
+					<td><%= product.vintage %></td>
+					<td><%= product.country %></td>
+					<td><%= product.region %></td>
+					<td><%= product.description %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>
+
 <%= link_to 'Edit', edit_brand_path(@brand) %> |
 <%= link_to 'Back', brands_path %>
