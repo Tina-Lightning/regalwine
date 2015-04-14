@@ -1,5 +1,4 @@
-class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+class Brands::ProductsController < ApplicationController
 
   # GET /products
   # GET /products.json
@@ -14,6 +13,7 @@ class ProductsController < ApplicationController
 
   # GET /products/new
   def new
+    @brand = Brand.find(params[:brand_id])
     @product = Product.new
   end
 
@@ -24,15 +24,17 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
+    @brand = Brand.find(params[:brand_id])
     @product = Product.new(product_params)
+    @product.brand = @brand
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
-        format.json { render :show, status: :created, location: @product }
+        format.html { redirect_to @brand, notice: 'Product was successfully created.' }
+        format.json { render :show, status: :created, location: @brand }
       else
         format.html { render :new }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+        format.json { render json: @brand.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -54,10 +56,16 @@ class ProductsController < ApplicationController
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
-    @product.destroy
-    respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
-      format.json { head :no_content }
+    @brand = Brand.find(params[:brand_id])
+    @product = Product.find(params[:id])
+    title = @product.name
+
+    if @product.destroy 
+      flash[:notice] = "\"#{title}\" was deleted successfully."
+      redirect_to @brand
+    else
+      flash[:error] = "There was an error deleting the product."
+      render :show
     end
   end
 

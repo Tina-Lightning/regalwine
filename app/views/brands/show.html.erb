@@ -27,6 +27,7 @@
 					<th>Country</th>
 					<th>Region</th>
 					<th>Description</th>
+					<th>&nbsp;</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -39,6 +40,7 @@
 					<td><%= product.country %></td>
 					<td><%= product.region %></td>
 					<td><%= product.description %></td>
+					<td><%= link_to "Delete", [@brand, product], method: :delete, confirm: "Are you sure you want to delete this product?" %></td>
 				</tr>
 				<% end %>
 			</tbody>
@@ -48,3 +50,5 @@
 
 <%= link_to 'Edit', edit_brand_path(@brand) %> |
 <%= link_to 'Back', brands_path %>
+
+<%= link_to 'Add new product', new_brand_product_path(@brand), class: 'pull-right' %>
