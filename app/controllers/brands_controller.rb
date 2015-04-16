@@ -63,6 +63,11 @@ class BrandsController < ApplicationController
     end
   end
 
+  def import 
+    Brand.import(params[:file])
+    redirect_to brands_path, notice: "Brands added successfully"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_brand

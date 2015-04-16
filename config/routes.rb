@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :brands  do 
     resources :products, except: [:index], controller: 'brands/products'
+    collection { post :import }
   end
 
 
