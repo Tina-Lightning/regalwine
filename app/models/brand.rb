@@ -9,4 +9,13 @@ class Brand < ActiveRecord::Base
 			Brand.create! row.to_hash
 		end
 	end
+
+	def self.to_csv 
+		CSV.generate do |csv|
+			csv << column_names
+			all.each do |brand|
+				csv << brand.attributes.values_at(*column_names)
+			end
+		end
+	end
 end

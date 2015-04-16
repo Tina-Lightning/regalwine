@@ -5,6 +5,12 @@ class BrandsController < ApplicationController
   # GET /brands.json
   def index
     @brands = Brand.all
+
+    respond_to do |format|
+      format.html
+      format.csv { render text: @brands.to_csv }
+    end
+    
   end
 
   # GET /brands/1
