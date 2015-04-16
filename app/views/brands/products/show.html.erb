@@ -36,6 +36,11 @@
 </p>
 
 <p>
+  <strong>Image:</strong>
+  <%= image_tag @product.image.url(:thumb) %>
+</p>
+
+<p>
   <strong>Brand:</strong>
   <%= @product.brand %>
 </p>

@@ -61,7 +61,7 @@ class Brands::ProductsController < ApplicationController
     title = @product.name
 
     if @product.destroy 
-      flash[:notice] = "\"#{title}\" was deleted successfully."
+      flash[:notice] = "#{title} was deleted successfully."
       redirect_to @brand
     else
       flash[:error] = "There was an error deleting the product."
@@ -77,6 +77,6 @@ class Brands::ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :product_type, :product_subtype, :string, :vintage, :country, :region, :description, :brand_id)
+      params.require(:product).permit(:name, :product_type, :product_subtype, :string, :vintage, :country, :region, :description, :brand_id, :image)
     end
 end
