@@ -5,9 +5,15 @@ Rails.application.routes.draw do
   root "pages#home"
 
   resources :brands  do 
-    resources :products, except: [:index], controller: 'brands/products'
+
+    resources :products, except: [:index], controller: 'brands/products' 
+    
     collection { post :import }
+  
   end
+
+
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
