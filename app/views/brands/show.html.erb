@@ -1,22 +1,22 @@
-<p>
-  <strong>Name:</strong>
-  <%= @brand.name %>
-</p>
+<h2><%= @brand.name %></h2>
 
-<p>
-  <strong>Description:</strong>
-  <%= @brand.description %>
-</p>
+<div class="row">
+	<div class="col-md-8">
+		<p>
+			<strong>Description: </strong><%= @brand.description %>
+		</p>
+		<p><strong>Viticulture:</strong> <%= @brand.viticulture %></p>
+	</div>
+	<div class="col-md-4">
+		<p><%= image_tag @brand.image.url(:medium) %> </p>
+		<p><%= link_to 'Edit Brand', edit_brand_path(@brand) %> </p>
+		<p><%= link_to 'Delete Brand', @brand, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+	</div>
+</div>
 
-<p>
-  <strong>Viticulture:</strong>
-  <%= @brand.viticulture %>
-</p>
+<hr>
 
-<p>
-  <strong>Image:</strong>
-  <%= image_tag @brand.image.url(:thumb) %>
-</p>
+<h3>Products</h3>
 
 <div class="media">
 	<div class="media-body">
@@ -55,7 +55,7 @@
 	</div>
 </div>
 
-<%= link_to 'Edit', edit_brand_path(@brand) %> |
-<%= link_to 'Back', brands_path %>
 
-<%= link_to 'Add new product', new_brand_product_path(@brand), class: 'pull-right' %>
+<%= link_to 'Back', brands_path, class: 'btn btn-default btn-sm' %>
+
+<%= link_to 'Add new product', new_brand_product_path(@brand), class: 'btn btn-success btn-sm pull-right' %>

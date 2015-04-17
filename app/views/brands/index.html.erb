@@ -1,44 +1,28 @@
 <h1>Brands</h1>
 
-<div class="media">
-  <div class="media-body">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Viticulture</th>
-          <th>Image</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @brands.each do |brand| %>
-          <tr>
-            <td><%= brand.name %></td>
-            <td><%= brand.description %></td>
-            <td><%= brand.viticulture %></td>
-            <td><%= image_tag brand.image.url(:thumb) %></td>
-            <td><%= link_to 'Show', brand , class: 'btn btn-xs btn-default' %></td>
-            <td><%= link_to 'Edit', edit_brand_path(brand), class: 'btn btn-xs btn-success' %></td>
-            <td><%= link_to 'Destroy', brand, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Are you sure?' } %></td>
-          </tr>
-        <% end %>
-      </tbody>      
-    </table>
-  </div>
-</div>
-
-<br>
-
-<h3>Import Brands</h3>
-<%= form_tag import_brands_path, multipart: true do %>
-  <%= file_field_tag :file %>
-  <%= submit_tag "Upload Brands", class: 'btn btn-default' %>
+<% Brand.all.group_by(&:initial).each do |initial, brands| %>
+  <%= content_tag(:h2, initial) %>
+  <% brands.each do |brand| %>
+    <%= link_to(brand.name, brand) %><br />
+  <% end %>
 <% end %>
 
-<h3>Download Brands</h3>
-<%= link_to "Report", brands_path(format: "csv"), class: 'btn btn-default' %>  
-
-<%= link_to 'New Brand', new_brand_path %>
+<div class="row">
+  <div class="col-md-4">
+    <h3>Add a New Brand</h3>
+    <%= link_to "Add New", new_brand_path, class: 'btn btn-success btn-sm' %> 
+  </div>
+  <div class="col-md-4">
+    <h3>Import Brands</h3>
+      <%= form_tag import_brands_path, multipart: true do %>
+        <p>
+        <%= file_field_tag :file %>
+        </p>
+        <%= submit_tag "Upload Brands", class: 'btn btn-info btn-sm' %>
+      <% end %>
+  </div>
+  <div class="col-md-4">
+    <h3>Download Brands</h3>
+    <%= link_to "Report", brands_path(format: "csv"), class: 'btn btn-primary btn-sm' %>  
+  </div>
+</div>

@@ -10,7 +10,6 @@ class BrandsController < ApplicationController
       format.html
       format.csv { render text: @brands.to_csv }
     end
-    
   end
 
   # GET /brands/1
