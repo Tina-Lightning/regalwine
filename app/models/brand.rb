@@ -1,5 +1,6 @@
 class Brand < ActiveRecord::Base
 	has_many :products, dependent: :destroy
+	belongs_to :user
 
 	has_attached_file :image,
 	:styles => {

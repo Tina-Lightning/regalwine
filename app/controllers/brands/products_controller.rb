@@ -1,4 +1,6 @@
 class Brands::ProductsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :require_user_admin, only: [:edit, :update, :destroy]
 
   # GET /products
   # GET /products.json
@@ -29,6 +31,7 @@ class Brands::ProductsController < ApplicationController
     @brand = Brand.find(params[:brand_id])
     @product = Product.new(product_params)
     @product.brand = @brand
+    @product.user_id = current_user.id
 
     respond_to do |format|
       if @product.save
@@ -79,6 +82,13 @@ class Brands::ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :product_type, :product_subtype, :vintage, :country, :region, :description, :brand_id, :image)
+      params.require(:product).permit(:name, :product_type, :product_subtype, :vintage, :country, :region, :description, :brand_id, :image, :user_id)
+    end
+
+    def require_user_admin
+      if !current_user.admin?
+        flash[:danger] = "Only admins can only edit brands and products"
+        redirect_to brands_path
+      end
     end
 end

@@ -39,8 +39,9 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
-  config.action_mailer.default_url_options = { :host => 'localhost:3000'}
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.perform_deliveries = true
+  # Un-comment these if you want to send an email confirmation when a user signs up 
+  # config.action_mailer.default_url_options = { :host => 'localhost:3000'}
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.perform_deliveries = true
 
 end

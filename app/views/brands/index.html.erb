@@ -8,6 +8,7 @@
 <% end %>
 
 <div class="row">
+  <% if current_user && current_user.admin? %>
   <div class="col-md-4">
     <h3>Add a New Brand</h3>
     <%= link_to "Add New", new_brand_path, class: 'btn btn-success btn-sm' %> 
@@ -25,4 +26,5 @@
     <h3>Download Brands</h3>
     <%= link_to "Report", brands_path(format: "csv"), class: 'btn btn-primary btn-sm' %>  
   </div>
+  <% end %>
 </div>

@@ -1,5 +1,8 @@
 class BrandsController < ApplicationController
   before_action :set_brand, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :admin_user, only: [:edit, :update, :destroy]
 
   # GET /brands
   # GET /brands.json
@@ -21,7 +24,7 @@ class BrandsController < ApplicationController
 
   # GET /brands/new
   def new
-    @brand = Brand.new
+    @brand = current_user.brands.build
   end
 
   # GET /brands/1/edit
@@ -31,7 +34,7 @@ class BrandsController < ApplicationController
   # POST /brands
   # POST /brands.json
   def create
-    @brand = Brand.new(brand_params)
+    @brand = current_user.brands.build(brand_params)
 
     respond_to do |format|
       if @brand.save
@@ -82,5 +85,14 @@ class BrandsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def brand_params
       params.require(:brand).permit(:name, :description, :viticulture, :image)
+    end
+
+    def correct_user
+      @brand = current_user.brands.find_by(id: params[:id])
+      redirect_to brands_path if @brand.nil?
+    end
+
+    def admin_user
+      redirect_to brands_path unless current_user.admin?
     end
 end
