@@ -2,16 +2,18 @@ class Brand < ActiveRecord::Base
 	has_many :products, dependent: :destroy
 	belongs_to :user
 
-	has_attached_file :image,
-	:styles => {
-  	:tiny => "25x25#",
-  	:thumb => "100x100#",
-  	:small  => "150x150>",
-  	:medium => "300x300>" },
-  	:default_url => "default_:style.png"
+	mount_uploader :image, ImageUploader, mount_on: :image_file_name
+
+	#has_attached_file :image,
+	#:styles => {
+  	#:tiny => "25x25#",
+  	#:thumb => "100x100#",
+  	#:small  => "150x150>",
+  	#:medium => "300x300>" },
+  	#:default_url => "default_:style.png"
 
 	#has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/Wine-default.jpg"
-	validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+	#validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
 	def self.import(file)
 		CSV.foreach(file.path, headers: true) do |row|

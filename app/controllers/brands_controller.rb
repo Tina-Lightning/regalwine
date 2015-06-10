@@ -1,8 +1,9 @@
 class BrandsController < ApplicationController
   before_action :set_brand, only: [:show, :edit, :update, :destroy]
-  before_action :correct_user, only: [:edit, :update, :destroy]
+  # before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :require_user_admin, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :admin_user, only: [:edit, :update, :destroy]
+  #before_action :admin_user, only: [:edit, :update, :destroy]
 
   # GET /brands
   # GET /brands.json
@@ -84,15 +85,24 @@ class BrandsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def brand_params
-      params.require(:brand).permit(:name, :description, :viticulture, :image)
+      params.require(:brand).permit(:name, :description, :viticulture, :image, :remote_image_url)
     end
 
+    # looks up the brand through the user, and if the brand doesn't belong to that user, it won't exist, 
+    # and it will redirect to the brands_path
     def correct_user
       @brand = current_user.brands.find_by(id: params[:id])
-      redirect_to brands_path if @brand.nil?
+      redirect_to brands_path, notice: "Not authorized to edit this brand" if @brand.nil?
     end
 
-    def admin_user
-      redirect_to brands_path unless current_user.admin?
+    #def admin_user
+    #  redirect_to brands_path unless current_user.admin?
+    #end
+
+    def require_user_admin
+      if !current_user.admin?
+        flash[:danger] = "Only admins can only edit brands and products"
+        redirect_to brands_path
+      end
     end
 end

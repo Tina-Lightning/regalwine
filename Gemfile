@@ -15,6 +15,8 @@ gem 'devise'
 gem "paperclip", "~> 4.2"
 gem 'aws-sdk', '< 2.0'
 gem 'magic_encoding', '~> 0.0.2'
+gem 'rmagick'
+gem 'carrierwave'
 
 group :development, :test do
      gem 'sqlite3'
