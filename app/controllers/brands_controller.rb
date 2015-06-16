@@ -2,11 +2,19 @@ class BrandsController < ApplicationController
   before_action :set_brand, only: [:show, :edit, :update, :destroy]
   # before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :require_user_admin, only: [:edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :search]
   #before_action :admin_user, only: [:edit, :update, :destroy]
 
   # GET /brands
   # GET /brands.json
+  def search
+    if params[:search].present?
+      @brands = Brand.search(params[:search])
+    else
+      @brands = Brand.all
+    end
+  end
+
   def index
     @brands = Brand.all
 

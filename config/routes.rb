@@ -5,7 +5,10 @@ Rails.application.routes.draw do
   root "pages#home"
 
   resources :brands  do 
-
+    collection do 
+      get 'search'
+    end
+    
     resources :products, except: [:index], controller: 'brands/products' 
     
     collection { post :import }

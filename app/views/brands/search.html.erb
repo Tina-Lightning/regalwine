@@ -1,0 +1,6 @@
+<div class="row">
+	<h3>Search Results: </h3>
+  		<% @brands.each do |brand| %>
+       		<p><%= link_to(brand.name, brand) %><br /></p>
+  		<% end %>
+</div>

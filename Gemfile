@@ -18,6 +18,7 @@ gem 'magic_encoding', '~> 0.0.2'
 gem 'rmagick'
 gem 'carrierwave'
 gem 'fog', '~> 1.31.0'
+gem 'searchkick', '~> 0.8.7'
 
 group :development, :test do
      gem 'sqlite3'

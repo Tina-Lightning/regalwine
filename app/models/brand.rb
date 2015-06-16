@@ -4,6 +4,8 @@ class Brand < ActiveRecord::Base
 
 	mount_uploader :image, ImageUploader, mount_on: :image_file_name
 
+	searchkick
+
 	#has_attached_file :image,
 	#:styles => {
   	#:tiny => "25x25#",
