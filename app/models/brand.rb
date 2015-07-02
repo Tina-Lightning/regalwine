@@ -17,10 +17,16 @@ class Brand < ActiveRecord::Base
 	#has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/Wine-default.jpg"
 	#validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
-	def self.import(file)
-		CSV.foreach(file.path, headers: true) do |row|
-			Brand.create! row.to_hash
-		end
+	#def self.import(file)
+		#CSV.foreach(file.path, headers: true) do |row|
+		#	Brand.create! row.to_hash
+		#end
+	#end
+
+	def self.import(file, user_id)
+	    CSV.foreach(file.path, headers: true) do |row|
+	      Brand.create! row.to_hash.merge(user_id: user_id)
+	    end
 	end
 
 	def self.to_csv 

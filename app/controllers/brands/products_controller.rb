@@ -75,6 +75,16 @@ class Brands::ProductsController < ApplicationController
     end
   end
 
+  def import
+    if params[:file].present?
+      @brand = Brand.find(params[:brand_id])
+      Product.import(params[:file], current_user.id)
+      redirect_to :back, notice: "Products added successfully"
+    else
+      redirect_to :back, notice: "You need to choose a file first!"
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product

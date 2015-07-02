@@ -8,4 +8,10 @@ class Product < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader, mount_on: :image_file_name
 
+  def self.import(file, user_id)
+    CSV.foreach(file.path, headers: true) do |row|
+      Product.create! row.to_hash.merge(user_id: user_id)
+    end
+  end
+
 end

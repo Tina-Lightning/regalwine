@@ -80,9 +80,13 @@ class BrandsController < ApplicationController
     end
   end
 
-  def import 
-    Brand.import(params[:file])
-    redirect_to brands_path, notice: "Brands added successfully"
+  def import
+    if params[:file].present?
+      Brand.import(params[:file], current_user.id)
+      redirect_to brands_path, notice: "Brands added successfully"
+    else
+      redirect_to :back, notice: "You need to choose a file first!"
+    end
   end
 
   private

@@ -9,7 +9,9 @@ Rails.application.routes.draw do
       get 'search'
     end
     
-    resources :products, except: [:index], controller: 'brands/products' 
+    resources :products, except: [:index], controller: 'brands/products' do
+      collection { post :import }
+    end
     
     collection { post :import }
   
