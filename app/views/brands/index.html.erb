@@ -1,10 +1,10 @@
 <h1>Brands</h1>
 
-<% Brand.all.group_by(&:initial).each do |initial, brands| %>
-  <%= content_tag(:h2, initial) %>
-  <% brands.each do |brand| %>
-    <%= link_to(brand.name, brand) %><br />
-  <% end %>
+<% @alpha.each do |alpha, glossary_array| %>
+  <h2><%= alpha %></h2>
+    <% glossary_array.each do |brand| %>
+      <p><%= link_to(brand.name, brand) %></p>
+    <% end %>
 <% end %>
 
 <div class="row">

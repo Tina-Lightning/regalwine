@@ -16,8 +16,9 @@ class BrandsController < ApplicationController
   end
 
   def index
-    @brands = Brand.all
-
+    @brands = Brand.order('name ASC')
+    @alpha = @brands.group_by{|u| u.name[0]}
+    
     respond_to do |format|
       format.html
       format.csv { render text: @brands.to_csv }
