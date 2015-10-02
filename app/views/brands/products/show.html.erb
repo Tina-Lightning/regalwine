@@ -1,3 +1,38 @@
+<h2><%= @brand.name %></h2>
+<div class="row">
+  <div class="col-md-8">
+    <p>
+      <strong>Description: </strong><%= simple_format(@brand.description) %>
+      <p><strong><%= link_to "Website", @brand.website %></strong></p>
+    </p>
+    <div class="row">
+      <div class="col-md-6">
+        <p><strong>Viticulture:</strong> <%= @brand.viticulture %></p>
+        <p><strong>Country:</strong> <%= @brand.country %></p>
+        <p><strong>Region:</strong> <%= @brand.region %></p>
+        <p><strong>Appellation:</strong> <%= @brand.appellation %></p>
+        <p><strong>Varietal:</strong> <%= @brand.varietal %></p>
+      </div>
+      <div class="col-md-6">
+        <p><strong>Soil Type:</strong> <%= @brand.soil_type %></p>
+        <p><strong>Enologist:</strong> <%= @brand.enologist %></p>
+        <p><strong>Viticulturist:</strong> <%= @brand.viticulturist %></p>
+        <p><strong>Vineyard Size:</strong> <%= @brand.vineyard_size %></p>
+        <p><strong>Total Production:</strong> <%= @brand.total_production %></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <p><%= image_tag @brand.image_url(:medium).to_s %></p>
+    <% if current_user && current_user.admin? %>
+      <p><%= link_to 'Edit Brand', edit_brand_path(@brand) %> </p>
+      <p><%= link_to 'Delete Brand', @brand, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    <% end %> 
+  </div>
+</div>
+
+<hr />
+
 <%= image_tag @product.image.url(:medium), class: 'pull-right' %>
 <p>
   <strong>Name:</strong>

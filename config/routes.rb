@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
   
 
-  get 'brands/tech_sheet'
-
-  get 'pages/tech_sheet'
-
   devise_for :users
   root "pages#home"
 

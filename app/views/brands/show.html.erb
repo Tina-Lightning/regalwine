@@ -58,8 +58,7 @@
 				<% @products.each do |product| %>
 				<tr>
 					<td><%= product.name %></td>
-					<td><%= link_to "Show Product Info", brand_product_path(@brand, product) %><br />
-						<%= link_to "Show Tech Sheet", tech_sheet_brand_products_path(@brand, product) %>
+					<td><%= link_to "Show Tech Sheet", brand_product_path(@brand, product) %><br />
 					</td>
 					<td><%= product.product_type %></td>
 					<td><%= product.product_subtype %></td>
