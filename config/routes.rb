@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   
 
+  get 'brands/tech_sheet'
+
+  get 'pages/tech_sheet'
+
   devise_for :users
   root "pages#home"
 
@@ -11,10 +15,11 @@ Rails.application.routes.draw do
     
     resources :products, except: [:index], controller: 'brands/products' do
       collection { post :import }
+      collection { post :tech_sheet }
     end
     
     collection { post :import }
-  
+
   end
 
 

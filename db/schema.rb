@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150610132340) do
+ActiveRecord::Schema.define(version: 20150813185134) do
 
   create_table "brands", force: :cascade do |t|
     t.string   "name"
@@ -25,6 +25,16 @@ ActiveRecord::Schema.define(version: 20150610132340) do
     t.datetime "image_updated_at"
     t.integer  "user_id"
     t.string   "image"
+    t.string   "website"
+    t.string   "country"
+    t.string   "region"
+    t.string   "appellation"
+    t.string   "varietal"
+    t.string   "soil_type"
+    t.string   "enologist"
+    t.string   "viticulturist"
+    t.string   "vineyard_size"
+    t.string   "total_production"
   end
 
   add_index "brands", ["user_id"], name: "index_brands_on_user_id"
@@ -38,14 +48,40 @@ ActiveRecord::Schema.define(version: 20150610132340) do
     t.string   "region"
     t.text     "description"
     t.integer  "brand_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "user_id"
     t.string   "image"
+    t.string   "appellation"
+    t.string   "vineyard"
+    t.string   "vineyard_size"
+    t.string   "grape_varietals"
+    t.string   "clones"
+    t.text     "soil"
+    t.text     "plot_characteristics"
+    t.string   "yield"
+    t.string   "vine_density"
+    t.string   "age_of_vines"
+    t.string   "vineyard_practices"
+    t.string   "harvest"
+    t.text     "fermentation"
+    t.string   "yeast"
+    t.string   "maceration"
+    t.string   "malolactic_fermentation"
+    t.text     "aging"
+    t.string   "filtration"
+    t.string   "total_production"
+    t.text     "accolades"
+    t.string   "beverage_tax_code"
+    t.string   "producer"
+    t.string   "nj_brand_number"
+    t.string   "ttb_number"
+    t.string   "additional_upc_code"
+    t.string   "bottle_size"
   end
 
   add_index "products", ["brand_id"], name: "index_products_on_brand_id"

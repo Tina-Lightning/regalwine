@@ -4,8 +4,24 @@
 	<div class="col-md-8">
 		<p>
 			<strong>Description: </strong><%= simple_format(@brand.description) %>
+			<p><strong><%= link_to "Website", @brand.website %></strong></p>
 		</p>
-		<p><strong>Viticulture:</strong> <%= @brand.viticulture %></p>
+		<div class="row">
+			<div class="col-md-6">
+				<p><strong>Viticulture:</strong> <%= @brand.viticulture %></p>
+				<p><strong>Country:</strong> <%= @brand.country %></p>
+				<p><strong>Region:</strong> <%= @brand.region %></p>
+				<p><strong>Appellation:</strong> <%= @brand.appellation %></p>
+				<p><strong>Varietal:</strong> <%= @brand.varietal %></p>
+			</div>
+			<div class="col-md-6">
+				<p><strong>Soil Type:</strong> <%= @brand.soil_type %></p>
+				<p><strong>Enologist:</strong> <%= @brand.enologist %></p>
+				<p><strong>Viticulturist:</strong> <%= @brand.viticulturist %></p>
+				<p><strong>Vineyard Size:</strong> <%= @brand.vineyard_size %></p>
+				<p><strong>Total Production:</strong> <%= @brand.total_production %></p>
+			</div>
+		</div>
 	</div>
 	<div class="col-md-4">
 		<p><%= image_tag @brand.image_url(:medium).to_s %></p>
@@ -26,6 +42,7 @@
 			<thead>
 				<tr>
 					<th>Name</th>
+					<th>Link</th>
 					<th>Type</th>
 					<th>Subtype</th>
 					<th>Vintage</th>
@@ -41,6 +58,9 @@
 				<% @products.each do |product| %>
 				<tr>
 					<td><%= product.name %></td>
+					<td><%= link_to "Show Product Info", brand_product_path(@brand, product) %><br />
+						<%= link_to "Show Tech Sheet", tech_sheet_brand_products_path(@brand, product) %>
+					</td>
 					<td><%= product.product_type %></td>
 					<td><%= product.product_subtype %></td>
 					<td><%= product.vintage %></td>

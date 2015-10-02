@@ -2,7 +2,7 @@ class BrandsController < ApplicationController
   before_action :set_brand, only: [:show, :edit, :update, :destroy]
   # before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :require_user_admin, only: [:edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show, :search]
+  before_action :authenticate_user!, except: [:index, :show, :search, :tech_sheet]
   #before_action :admin_user, only: [:edit, :update, :destroy]
 
   # GET /brands
@@ -16,7 +16,7 @@ class BrandsController < ApplicationController
   end
 
   def index
-    @brands = Brand.order('name ASC')
+    @brands = Brand.order('name ASC').paginate(:page => params[:page], :per_page => 3)
     @alpha = @brands.group_by{|u| u.name[0]}
     
     respond_to do |format|
@@ -90,6 +90,11 @@ class BrandsController < ApplicationController
     end
   end
 
+  def tech_sheet
+    @brand = Brand.find(params[:id])
+    @products = @brand.products
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_brand
@@ -98,7 +103,7 @@ class BrandsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def brand_params
-      params.require(:brand).permit(:name, :description, :viticulture, :image, :remote_image_url)
+      params.require(:brand).permit(:name, :description, :viticulture, :image, :remote_image_url, :website, :country, :region, :appellation, :varietal, :soil_type, :enologist, :viticulturist, :vineyard_size, :total_production)
     end
 
     # looks up the brand through the user, and if the brand doesn't belong to that user, it won't exist, 

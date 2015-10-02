@@ -1,5 +1,4 @@
-<p id="notice"><%= notice %></p>
-
+<%= image_tag @product.image.url(:medium), class: 'pull-right' %>
 <p>
   <strong>Name:</strong>
   <%= @product.name %>
@@ -36,11 +35,112 @@
 </p>
 
 <p>
-  <strong>Image:</strong>
-  <%= image_tag @product.image.url(:thumb) %>
+  <strong>Appellation:</strong>
+  <%= @product.appellation %>
 </p>
 
 <p>
-  <strong>Brand:</strong>
-  <%= @product.brand %>
+  <strong>Vineyard:</strong>
+  <%= @product.vineyard %>
+</p>
+<p>
+  <strong>Vineyard Size:</strong>
+  <%= @product.vineyard_size %>
+</p>
+<p>
+  <strong>Grape Varietals:</strong>
+  <%= @product.grape_varietals %>
+</p>
+<p>
+  <strong>Clones:</strong>
+  <%= @product.clones %>
+</p>
+<p>
+  <strong>Soil:</strong>
+  <%= @product.soil %>
+</p>
+<p>
+  <strong>Plot Characteristics:</strong>
+  <%= @product.plot_characteristics %>
+</p>
+<p>
+  <strong>Yield:</strong>
+  <%= @product.yield %>
+</p>
+<p>
+  <strong>Vine Density:</strong>
+  <%= @product.vine_density %>
+</p>
+<p>
+  <strong>Age of Vines:</strong>
+  <%= @product.age_of_vines %>
+</p>
+<p>
+  <strong>Vineyard Practices:</strong>
+  <%= @product.vineyard_practices %>
+</p>
+<p>
+  <strong>Harvest:</strong>
+  <%= @product.harvest %>
+</p>
+<p>
+  <strong>Fermentation:</strong>
+  <%= @product.fermentation %>
+</p>
+<p>
+  <strong>Yeast:</strong>
+  <%= @product.yeast %>
+</p>
+<p>
+  <strong>Maceration:</strong>
+  <%= @product.maceration %>
+</p>
+<p>
+  <strong>Malolactic Fermentation:</strong>
+  <%= @product.malolactic_fermentation %>
+</p>
+<p>
+  <strong>Aging:</strong>
+  <%= @product.aging %>
+</p>
+<p>
+  <strong>Filtration:</strong>
+  <%= @product.filtration %>
+</p>
+<p>
+  <strong>Total Production:</strong>
+  <%= @product.total_production %>
+</p>
+<p>
+  <strong>Accolades:</strong>
+  <%= @product.accolades %>
+</p>
+<p>
+  <strong>Beverage Tax Code:</strong>
+  <%= @product.beverage_tax_code %>
+</p>
+<p>
+  <strong>Producer:</strong>
+  <%= @product.producer %>
+</p>
+<p>
+  <strong>NJ Brand Number:</strong>
+  <%= @product.nj_brand_number %>
+</p>
+<p>
+  <strong>TTP Number:</strong>
+  <%= @product.ttb_number %>
+</p>
+<p>
+  <strong>Additional UPC Code:</strong>
+  <%= @product.additional_upc_code %>
+</p>
+<p>
+  <strong>Bottle Size:</strong>
+  <%= @product.bottle_size %>
+</p>
+
+<hr />
+
+<p><%= link_to "Edit", edit_brand_product_path(@brand, @product), class: 'btn btn-success btn-sm' %> <%= link_to "Delete", [@brand, @product], method: :delete, confirm: "Are you sure you want to delete this product?", class: 'btn btn-danger btn-sm' %></p>
 </p>
