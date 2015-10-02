@@ -105,7 +105,7 @@ class Brands::ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :product_type, :product_subtype, :vintage, :country, :region, :description, :brand_id, :user_id, :image, :remote_image_url, :appellation, :vineyard, :vineyard_size, :grape_varietals, :clones, :soil, :plot_characteristics, :yield, :vine_density, :age_of_vines, :vineyard_practices, :harvest, :fermentation, :yeast, :maceration, :malolactic_fermentation, :aging, :filtration, :total_production, :accolades, :beverage_tax_code, :producer, :nj_brand_number, :ttb_number, :additional_upc_code, :bottle_size)
+      params.require(:product).permit(:name, :product_type, :product_subtype, :vintage, :country, :region, :brand_id, :user_id, :image, :remote_image_url, :appellation, :vineyard, :grape_varietals, :clones, :soil, :plot_characteristics, :yield, :vineyard_practices, :harvest, :yeast, :accolades, :producer, :bottle_size)
     end
 
     def require_user_admin

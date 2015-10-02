@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150813185134) do
+ActiveRecord::Schema.define(version: 20151002142726) do
 
   create_table "brands", force: :cascade do |t|
     t.string   "name"
@@ -46,10 +46,9 @@ ActiveRecord::Schema.define(version: 20150813185134) do
     t.string   "vintage"
     t.string   "country"
     t.string   "region"
-    t.text     "description"
     t.integer  "brand_id"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -58,30 +57,19 @@ ActiveRecord::Schema.define(version: 20150813185134) do
     t.string   "image"
     t.string   "appellation"
     t.string   "vineyard"
-    t.string   "vineyard_size"
     t.string   "grape_varietals"
     t.string   "clones"
     t.text     "soil"
     t.text     "plot_characteristics"
     t.string   "yield"
-    t.string   "vine_density"
-    t.string   "age_of_vines"
     t.string   "vineyard_practices"
     t.string   "harvest"
-    t.text     "fermentation"
     t.string   "yeast"
-    t.string   "maceration"
-    t.string   "malolactic_fermentation"
-    t.text     "aging"
-    t.string   "filtration"
-    t.string   "total_production"
     t.text     "accolades"
-    t.string   "beverage_tax_code"
     t.string   "producer"
-    t.string   "nj_brand_number"
-    t.string   "ttb_number"
-    t.string   "additional_upc_code"
     t.string   "bottle_size"
+    t.string   "style"
+    t.text     "vinification_methods"
   end
 
   add_index "products", ["brand_id"], name: "index_products_on_brand_id"
