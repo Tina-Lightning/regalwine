@@ -34,105 +34,153 @@
 <hr />
 
 <%= image_tag @product.image.url(:medium), class: 'pull-right' %>
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
 
-<p>
-  <strong>Product type:</strong>
-  <%= @product.product_type %>
-</p>
+<% if !@product.name.blank? %>
+  <p>
+    <strong>Name:</strong>
+    <%= @product.name %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Product subtype:</strong>
-  <%= @product.product_subtype %>
-</p>
+<% if !@product.product_type.blank? %>
+  <p>
+    <strong>Product type:</strong>
+    <%= @product.product_type %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Vintage:</strong>
-  <%= @product.vintage %>
-</p>
+<% if !@product.product_subtype.blank? %>
+  <p>
+    <strong>Product subtype:</strong>
+    <%= @product.product_subtype %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Country:</strong>
-  <%= @product.country %>
-</p>
+<% if !@product.vintage.blank? %>
+  <p>
+    <strong>Vintage:</strong>
+    <%= @product.vintage %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Region:</strong>
-  <%= @product.region %>
-</p>
+<% if !@product.country.blank? %>
+  <p>
+    <strong>Country:</strong>
+    <%= @product.country %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Appellation:</strong>
-  <%= @product.appellation %>
-</p>
+<% if !@product.region.blank? %>
+  <p>
+    <strong>Region:</strong>
+    <%= @product.region %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Vineyard:</strong>
-  <%= @product.vineyard %>
-</p>
+<% if !@product.appellation.blank? %>
+  <p>
+    <strong>Appellation:</strong>
+    <%= @product.appellation %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Grape Varietals - General:</strong>
-  <%= @product.grape_varietals %>
-</p>
-<p>
-  <strong>Grape Varietals - Clones:</strong>
-  <%= @product.clones %>
-</p>
-<p>
-  <strong>Soil:</strong>
-  <%= @product.soil %>
-</p>
-<p>
-  <strong>Plot Characteristics:</strong>
-  <%= @product.plot_characteristics %>
-</p>
-<p>
-  <strong>Yield / Vine Density:</strong>
-  <%= @product.yield %>
-</p>
+<% if !@product.vineyard.blank? %>
+  <p>
+    <strong>Vineyard:</strong>
+    <%= @product.vineyard %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Harvest:</strong>
-  <%= @product.harvest %>
-</p>
+<% if !@product.grape_varietals.blank? %>
+  <p>
+    <strong>Grape Varietals - General:</strong>
+    <%= @product.grape_varietals %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Yeast:</strong>
-  <%= @product.yeast %>
-</p>
+<% if !@product.clones.blank? %>
+  <p>
+    <strong>Grape Varietals - Clones:</strong>
+    <%= @product.clones %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Accolades:</strong>
-  <%= @product.accolades %>
-</p>
+<% if !@product.soil.blank? %>
+  <p>
+    <strong>Soil:</strong>
+    <%= @product.soil %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Producer:</strong>
-  <%= @product.producer %>
-</p>
+<% if !@product.plot_characteristics.blank? %>
+  <p>
+    <strong>Plot Characteristics:</strong>
+    <%= @product.plot_characteristics %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Bottle Size:</strong>
-  <%= @product.bottle_size %>
-</p>
+<% if !@product.yield.blank? %>
+  <p>
+    <strong>Yield / Vine Density:</strong>
+    <%= @product.yield %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Style:</strong>
-  <%= @product.style %>
-</p>
+<% if !@product.harvest.blank? %>
+  <p>
+    <strong>Harvest:</strong>
+    <%= @product.harvest %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Vinification Methods:</strong>
-  <%= simple_format(@product.vinification_methods) %>
-</p>
-<p>
-  <strong>Description / Tasting Notes:</strong>
-  <%= simple_format(@product.description) %>
-</p>
+<% if !@product.yeast.blank? %>
+  <p>
+    <strong>Yeast:</strong>
+    <%= @product.yeast %>
+  </p>
+<% end %>
+
+<% if !@product.accolades.blank? %>
+  <p>
+    <strong>Accolades:</strong>
+    <%= @product.accolades %>
+  </p>
+<% end %>
+
+<% if !@product.producer.blank? %>
+  <p>
+    <strong>Producer:</strong>
+    <%= @product.producer %>
+  </p>
+<% end %>
+
+<% if !@product.bottle_size.blank? %>
+  <p>
+    <strong>Bottle Size:</strong>
+    <%= @product.bottle_size %>
+  </p>
+<% end %>
+
+<% if !@product.style.blank? %>
+  <p>
+    <strong>Style:</strong>
+    <%= @product.style %>
+  </p>
+<% end %>
+
+<% if !@product.vinification_methods.blank? %>
+  <p>
+    <strong>Vinification Methods:</strong>
+    <%= simple_format(@product.vinification_methods) %>
+  </p>
+<% end %>
+
+<% if !@product.description.blank? %>
+  <p>
+    <strong>Description / Tasting Notes:</strong>
+    <%= simple_format(@product.description) %>
+  </p>
+<% end %>
 
 <hr />
 
