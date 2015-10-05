@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="col-md-8">
-    <% if !@brand.description.blank? %><p><strong>Description: </strong><%= simple_format(@brand.description) %></p><% end %>
+    <% if !@brand.description.blank? %><p><%= simple_format(@brand.description) %></p><% end %>
     <% if !@brand.website.blank? %><p><strong><%= link_to "Website", @brand.website %></strong></p><% end %>
     <div class="row">
       <div class="col-md-6">
