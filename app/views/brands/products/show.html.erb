@@ -126,12 +126,12 @@
 </p>
 
 <p>
-  <strong>Vinification Methods:</strong>
-  <%= @product.vinification_methods %>
+  <strong>Vinification Methods:</strong> simple_format()
+  <%= simple_format(@product.vinification_methods) %>
 </p>
 <p>
   <strong>Description / Tasting Notes:</strong>
-  <%= @product.description %>
+  <%= simple_format(@product.description) %>
 </p>
 
 <hr />
