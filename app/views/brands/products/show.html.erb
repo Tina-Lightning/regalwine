@@ -1,24 +1,22 @@
 <h2><%= @brand.name %></h2>
 <div class="row">
   <div class="col-md-8">
-    <p>
-      <strong>Description: </strong><%= simple_format(@brand.description) %>
-      <p><strong><%= link_to "Website", @brand.website %></strong></p>
-    </p>
+    <% if !@brand.description.blank? %><p><strong>Description: </strong><%= simple_format(@brand.description) %></p><% end %>
+    <% if !@brand.website.blank? %><p><strong><%= link_to "Website", @brand.website %></strong></p><% end %>
     <div class="row">
       <div class="col-md-6">
-        <p><strong>Viticulture:</strong> <%= @brand.viticulture %></p>
-        <p><strong>Country:</strong> <%= @brand.country %></p>
-        <p><strong>Region:</strong> <%= @brand.region %></p>
-        <p><strong>Appellation:</strong> <%= @brand.appellation %></p>
-        <p><strong>Varietal:</strong> <%= @brand.varietal %></p>
+        <% if !@brand.viticulture.blank? %><p><strong>Viticulture:</strong> <%= @brand.viticulture %></p><% end %>
+        <% if !@brand.country.blank? %><p><strong>Country:</strong> <%= @brand.country %></p><% end %>
+        <% if !@brand.region.blank? %><p><strong>Region:</strong> <%= @brand.region %></p><% end %>
+        <% if !@brand.appellation.blank? %><p><strong>Appellation:</strong> <%= @brand.appellation %></p><% end %>
+        <% if !@brand.varietal.blank? %><p><strong>Varietal:</strong> <%= @brand.varietal %></p><% end %>
       </div>
       <div class="col-md-6">
-        <p><strong>Soil Type:</strong> <%= @brand.soil_type %></p>
-        <p><strong>Enologist:</strong> <%= @brand.enologist %></p>
-        <p><strong>Viticulturist:</strong> <%= @brand.viticulturist %></p>
-        <p><strong>Vineyard Size:</strong> <%= @brand.vineyard_size %></p>
-        <p><strong>Total Production:</strong> <%= @brand.total_production %></p>
+        <% if !@brand.soil_type.blank? %><p><strong>Soil Type:</strong> <%= @brand.soil_type %></p><% end %>
+        <% if !@brand.enologist.blank? %><p><strong>Enologist:</strong> <%= @brand.enologist %></p><% end %>
+        <% if !@brand.viticulturist.blank? %><p><strong>Viticulturist:</strong> <%= @brand.viticulturist %></p><% end %>
+        <% if !@brand.vineyard_size.blank? %><p><strong>Vineyard Size:</strong> <%= @brand.vineyard_size %></p><% end %>
+        <% if !@brand.total_production.blank? %><p><strong>Total Production:</strong> <%= @brand.total_production %></p><% end %>
       </div>
     </div>
   </div>
