@@ -12,31 +12,34 @@ class Brands::ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-    @brand = Brand.find(params[:brand_id])
+    @brand = Brand.friendly.find(params[:brand_id])
+    if request.path != product_path(@product)
+      redirect_to @product, status: :moved_permanently
+    end
     @products = Product.all
   end
 
   def show
-    @brand = Brand.find(params[:brand_id])
-    @product = @brand.products.find(params[:id])
+    @brand = Brand.friendly.find(params[:brand_id])
+    @product = @brand.products.friendly.find(params[:id])
   end
 
   # GET /products/new
   def new
-    @brand = Brand.find(params[:brand_id])
+    @brand = Brand.friendly.find(params[:brand_id])
     @product = Product.new
   end
 
   # GET /products/1/edit
   def edit
-    @brand = Brand.find(params[:brand_id])
-    @product = Product.find(params[:id])
+    @brand = Brand.friendly.find(params[:brand_id])
+    @product = Product.friendly.find(params[:id])
   end
 
   # POST /products
   # POST /products.json
   def create
-    @brand = Brand.find(params[:brand_id])
+    @brand = Brand.friendly.find(params[:brand_id])
     @product = Product.new(product_params)
     @product.brand = @brand
     @product.user_id = current_user.id
@@ -55,8 +58,8 @@ class Brands::ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
-    @brand = Brand.find(params[:brand_id])
-    @product = Product.find(params[:id])
+    @brand = Brand.friendly.find(params[:brand_id])
+    @product = Product.friendly.find(params[:id])
     if @product.update(product_params)
       flash[:notice] = "Product was updated successfully."
       redirect_to @brand
@@ -69,8 +72,8 @@ class Brands::ProductsController < ApplicationController
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
-    @brand = Brand.find(params[:brand_id])
-    @product = Product.find(params[:id])
+    @brand = Brand.friendly.find(params[:brand_id])
+    @product = Product.friendly.find(params[:id])
     title = @product.name
 
     if @product.destroy 
@@ -84,7 +87,7 @@ class Brands::ProductsController < ApplicationController
 
   def import
     if params[:file].present?
-      @brand = Brand.find(params[:brand_id])
+      @brand = Brand.friendly.find(params[:brand_id])
       Product.import(params[:file], current_user.id)
       redirect_to :back, notice: "Products added successfully"
     else
@@ -95,7 +98,7 @@ class Brands::ProductsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
-      @product = Product.find(params[:id])
+      @product = Product.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

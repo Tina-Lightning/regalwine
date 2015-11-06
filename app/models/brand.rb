@@ -23,6 +23,12 @@ class Brand < ActiveRecord::Base
 		#end
 	#end
 
+	extend FriendlyId
+	friendly_id :name, use: [:slugged, :history]
+	#def should_generate_new_friendly_id?
+    #	new_record?
+  	#end
+
 	def self.import(file, user_id)
 	    CSV.foreach(file.path, headers: true) do |row|
 	      Brand.create! row.to_hash.merge(user_id: user_id)

@@ -28,7 +28,10 @@ class BrandsController < ApplicationController
   # GET /brands/1
   # GET /brands/1.json
   def show
-    @brand = Brand.find(params[:id])
+    @brand = Brand.friendly.find(params[:id])
+    if request.path != brand_path(@brand)
+      redirect_to @brand, status: :moved_permanently
+    end
     @products = @brand.products
   end
 
@@ -93,7 +96,7 @@ class BrandsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_brand
-      @brand = Brand.find(params[:id])
+      @brand = Brand.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
