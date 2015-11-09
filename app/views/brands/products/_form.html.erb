@@ -92,6 +92,19 @@
     <%= f.label :remote_image_url, "or image URL" %><br>
     <%= f.text_field :remote_image_url %>
   </div>
+  <div class="field">
+    <%= f.label :shelf_talker %><br>
+    <%= f.file_field :shelf_talker %>
+  </div>
+  <div class="field">
+    <%= f.label :tech_sheet %><br>
+    <%= f.file_field :tech_sheet %>
+  </div>
+  <div class="field">
+    <%= f.label :case_card %><br>
+    <%= f.file_field :case_card %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

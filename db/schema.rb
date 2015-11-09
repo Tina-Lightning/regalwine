@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151106181158) do
+ActiveRecord::Schema.define(version: 20151109212156) do
 
   create_table "brands", force: :cascade do |t|
     t.string   "name"
@@ -87,6 +87,9 @@ ActiveRecord::Schema.define(version: 20151106181158) do
     t.text     "vinification_methods"
     t.text     "description"
     t.string   "slug"
+    t.string   "shelf_talker"
+    t.string   "tech_sheet"
+    t.string   "case_card"
   end
 
   add_index "products", ["brand_id"], name: "index_products_on_brand_id"

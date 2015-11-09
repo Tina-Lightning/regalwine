@@ -14,6 +14,15 @@ class Product < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader, mount_on: :image_file_name
 
+  mount_uploader :shelf_talker, ShelfTalkerUploader # Tells rails to use this uploader for this model.
+  validates :name, presence: true # Make sure the owner's name is present.
+
+  mount_uploader :tech_sheet, TechSheetUploader # Tells rails to use this uploader for this model.
+  validates :name, presence: true # Make sure the owner's name is present.
+
+  mount_uploader :case_card, CaseCardUploader # Tells rails to use this uploader for this model.
+  validates :name, presence: true # Make sure the owner's name is present.
+
   def self.import(file, user_id)
     CSV.foreach(file.path, headers: true) do |row|
       Product.create! row.to_hash.merge(user_id: user_id)

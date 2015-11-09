@@ -180,6 +180,24 @@
   </p>
 <% end %>
 
+<% if !@product.shelf_talker.blank? %>
+  <p>
+    <%= link_to "Shelf Talker", @product.shelf_talker_url, :target => '_blank' %>
+  </p>
+<% end %>
+
+<% if !@product.tech_sheet.blank? %>
+  <p>
+    <%= link_to "Tech Sheet", @product.tech_sheet_url, :target => '_blank' %>
+  </p>
+<% end %>
+
+<% if !@product.case_card.blank? %>
+  <p>
+    <%= link_to "Case Card", @product.case_card_url, :target => '_blank' %>
+  </p>
+<% end %>
+
 <hr />
 
 <p><%= link_to "Back to full product list", brand_path(@brand), class: 'btn btn-default btn-sm' %></p>
