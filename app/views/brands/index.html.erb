@@ -1,13 +1,24 @@
 <h1>Brands</h1>
 
-<% @alpha.each do |alpha, glossary_array| %>
-  <h2><%= alpha %></h2>
-    <% glossary_array.each do |brand| %>
-      <p><%= link_to(brand.name, brand) %></p>
-    <% end %>
-<% end %>
-
 <div class="row">
+  <% if @brands.exists? %>
+    <% @brands.each_slice(4) do |brand| %>
+      <div class="row">
+        <% brand.each do |brand| %>
+          <div class="col-md-3">
+            <div class="center">
+              <%= link_to (image_tag brand.image_url(:small).to_s, class: 'img-thumbnail'), brand %>
+              <p><%= brand.name %> <br />
+              <em><%= brand.appellation %></em></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="row well">
   <% if current_user && current_user.admin? %>
   <div class="col-md-4">
     <h3>Add a New Brand</h3>
@@ -27,8 +38,4 @@
     <%= link_to "Report", brands_path(format: "csv"), class: 'btn btn-primary btn-sm' %>  
   </div>
   <% end %>
-</div>
-
-<div class="center">
-  <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
 </div>

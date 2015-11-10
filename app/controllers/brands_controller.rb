@@ -18,7 +18,7 @@ class BrandsController < ApplicationController
   def index
     @brands = Brand.order('name ASC').paginate(:page => params[:page], :per_page => 30)
     @alpha = @brands.group_by{|u| u.name[0]}
-    
+
     respond_to do |format|
       format.html
       format.csv { render text: @brands.to_csv }
